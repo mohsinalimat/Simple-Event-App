@@ -4,6 +4,6 @@ use_frameworks!
 
 target 'Event App' do
 
-pod 'JTAppleCalendar', '~> 6.1'
+pod 'FSCalendar'
 
 end
