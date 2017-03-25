@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="yPz-0A-9ka">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zbe-Ow-A2F">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -158,12 +158,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="136.28185907046478"/>
+            <point key="canvasLocation" x="126" y="135"/>
         </scene>
-        <!--View Controller-->
+        <!--Calendar View Controller-->
         <scene sceneID="CjC-JY-zCV">
             <objects>
-                <viewController id="zbe-Ow-A2F" sceneMemberID="viewController">
+                <viewController id="zbe-Ow-A2F" customClass="CalendarViewController" customModule="Event_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kbc-lX-esQ"/>
                         <viewControllerLayoutGuide type="bottom" id="4bK-bR-j6D"/>
@@ -171,12 +171,29 @@
                     <view key="view" contentMode="scaleToFill" id="dZx-IG-bEs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spQ-R0-z13" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
+                                <rect key="frame" x="0.0" y="151" width="375" height="365"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="spQ-R0-z13" secondAttribute="height" multiplier="75:73" id="VrL-Wz-fky"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="spQ-R0-z13" firstAttribute="top" secondItem="kbc-lX-esQ" secondAttribute="bottom" constant="131" id="cLk-xW-KvC"/>
+                            <constraint firstItem="spQ-R0-z13" firstAttribute="centerX" secondItem="dZx-IG-bEs" secondAttribute="centerX" id="qA5-ia-7mR"/>
+                            <constraint firstItem="spQ-R0-z13" firstAttribute="width" secondItem="dZx-IG-bEs" secondAttribute="height" multiplier="375:667" id="xhT-l2-6HE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calendarView" destination="spQ-R0-z13" id="c6C-fp-Yjk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CCK-sa-fBd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="996" y="136"/>
+            <point key="canvasLocation" x="996" y="135.38230884557723"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="SvD-ct-cLY">
