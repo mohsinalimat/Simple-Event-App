@@ -25,6 +25,7 @@
 		DA2624A51E871C4B003C3FE9 /* FSCalendarDelegationProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2624931E871C4B003C3FE9 /* FSCalendarDelegationProxy.m */; };
 		DA2624A61E871C4B003C3FE9 /* FSCalendarExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2624961E871C4B003C3FE9 /* FSCalendarExtensions.m */; };
 		DA2624A71E871C4B003C3FE9 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2624971E871C4B003C3FE9 /* FSCalendar+Deprecated.m */; };
+		DA2624B51E882956003C3FE9 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2624B41E882956003C3FE9 /* first.png */; };
 		DA49BBFB1E86D9A100C3D475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49BBFA1E86D9A100C3D475 /* AppDelegate.swift */; };
 		DA49BBFD1E86D9A100C3D475 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49BBFC1E86D9A100C3D475 /* ViewController.swift */; };
 		DA49BC001E86D9A100C3D475 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA49BBFE1E86D9A100C3D475 /* Main.storyboard */; };
@@ -92,6 +93,7 @@
 		DA2624951E871C4B003C3FE9 /* FSCalendarExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendarExtensions.h; sourceTree = "<group>"; };
 		DA2624961E871C4B003C3FE9 /* FSCalendarExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSCalendarExtensions.m; sourceTree = "<group>"; };
 		DA2624971E871C4B003C3FE9 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
+		DA2624B41E882956003C3FE9 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		DA49BBF71E86D9A100C3D475 /* Event App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Event App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA49BBFA1E86D9A100C3D475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA49BBFC1E86D9A100C3D475 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				DA49BC2E1E86EA7400C3D475 /* CalendarFiles */,
 				DA49BBFE1E86D9A100C3D475 /* Main.storyboard */,
 				DA49BC041E86D9A100C3D475 /* Assets.xcassets */,
+				DA2624B41E882956003C3FE9 /* first.png */,
 				DA49BC061E86D9A100C3D475 /* LaunchScreen.storyboard */,
 				DA49BC091E86D9A100C3D475 /* Info.plist */,
 				DA49BC011E86D9A100C3D475 /* Event_App.xcdatamodeld */,
@@ -390,6 +393,7 @@
 				DA49BC081E86D9A100C3D475 /* LaunchScreen.storyboard in Resources */,
 				DA49BC051E86D9A100C3D475 /* Assets.xcassets in Resources */,
 				DA49BC001E86D9A100C3D475 /* Main.storyboard in Resources */,
+				DA2624B51E882956003C3FE9 /* first.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

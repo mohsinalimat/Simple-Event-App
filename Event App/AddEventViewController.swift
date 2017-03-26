@@ -9,24 +9,20 @@
 import UIKit
 import CoreData
 
-class AddEventViewController: UIViewController {
+class AddEventViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var titleField: UITextField!
     @IBOutlet var dateField: UITextField!
     @IBOutlet var notificationSwitch: UISwitch!
     
-    let imagePicker = UIImagePickerController()
-
-    let convertQueue = DispatchQueue(label:"convertQueue", attributes: .concurrent)
-    let saveQueue = DispatchQueue(label:"saveQueue", attributes: .concurrent)
-    
-    
-    var managedContext : NSManagedObjectContext?
+    var theImage : UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         notificationSwitch.addTarget(self, action: #selector(switchIsChanged(mySwitch:)), for: .valueChanged)
+        
+        createDirectory()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +35,13 @@ class AddEventViewController: UIViewController {
     }
     
     @IBAction func customizeBackground(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary;
+            imagePicker.allowsEditing = true
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @IBAction func notificationSwitchAction(_ sender: Any) {
@@ -61,131 +63,37 @@ class AddEventViewController: UIViewController {
             print("UISwitch is OFF")
         }
     }
-}
-
-extension AddEventViewController {
-    func coreDataSetup() {
-        saveQueue.sync() {
-            self.managedContext = AppDelegate().context
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            theImage = image
+            saveImageDocumentDirectory(image: theImage)
         }
-    }
-}
-
-extension AddEventViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerSetup() {
-        
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
-        
-    }
-    
-    // When an image is "picked" it will return through this function
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        else if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            theImage = image
+            saveImageDocumentDirectory(image: theImage)
+        } else{
+            print("Something went wrong")
+        }
         
         self.dismiss(animated: true, completion: nil)
-        prepareImageForSaving(image: image)
-        
     }
-}
-
-extension AddEventViewController {
     
-    func prepareImageForSaving(image:UIImage) {
-        
-        // use date as unique id
-        let date : Double = NSDate().timeIntervalSince1970
-        
-        // dispatch with gcd.
-        convertQueue.async {
-            
-            // create NSData from UIImage
-            guard let imageData = UIImageJPEGRepresentation(image, 1) else {
-                // handle failed conversion
-                print("jpg error")
-                return
-            }
-            
-            // scale image, I chose the size of the VC because it is easy
-            let thumbnail = image.scale(toSize: self.view.frame.size)
-            
-            guard let thumbnailData  = UIImageJPEGRepresentation(thumbnail, 0.7) else {
-                // handle failed conversion
-                print("jpg error")
-                return
-            }
-            
-            // send to save function
-            self.saveImage(imageData: imageData as NSData, thumbnailData: thumbnailData as NSData, date: date)
-            
+    func saveImageDocumentDirectory(image: UIImage){
+        let fileManager = FileManager.default
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("\(titleField.text)")
+        print(paths)
+        let imageData = UIImageJPEGRepresentation(image, 0.5)
+        fileManager.createFile(atPath: paths as String, contents: imageData, attributes: nil)
+    }
+    
+    func createDirectory(){
+        let fileManager = FileManager.default
+        let paths = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent("customDirectory")
+        if !fileManager.fileExists(atPath: paths){
+            try! fileManager.createDirectory(atPath: paths, withIntermediateDirectories: true, attributes: nil)
+        }else{
+            print("Already dictionary created.")
         }
     }
-}
-
-extension AddEventViewController {
-    
-    func saveImage(imageData:NSData, thumbnailData:NSData, date: Double) {
-        
-        saveQueue.async {
-            // create new objects in moc
-            guard let moc = self.managedContext else {
-                return
-            }
-            
-            guard let fullRes = NSEntityDescription.insertNewObject(forEntityName: "FullRes", into: moc) as? FullRes, let thumbnail = NSEntityDescription.insertNewObject(forEntityName: "Thumbnail", into: moc) as? Thumbnail else {
-                // handle failed new object in moc
-                print("moc error")
-                return
-            }
-            
-            //set image data of fullres
-            fullRes.imageData = imageData
-            
-            //set image data of thumbnail
-            thumbnail.imageData = thumbnailData
-            thumbnail.id = Double(Int(date as NSNumber))
-            thumbnail.fullRes = fullRes
-            
-            // save the new objects
-            do {
-                try moc.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
-            }
-            
-            // clear the moc
-            moc.refreshAllObjects()
-        }
-    }
-}
-
-extension CGSize {
-    
-    func resizeFill(toSize: CGSize) -> CGSize {
-        
-        let scale : CGFloat = (self.height / self.width) < (toSize.height / toSize.width) ? (self.height / toSize.height) : (self.width / toSize.width)
-        return CGSize(width: (self.width / scale), height: (self.height / scale))
-        
-    }
-}
-
-extension UIImage {
-    
-    func scale(toSize newSize:CGSize) -> UIImage {
-        
-        // make sure the new size has the correct aspect ratio
-        let aspectFill = self.size.resizeFill(toSize: newSize)
-        
-        UIGraphicsBeginImageContextWithOptions(aspectFill, false, 0.0);
-        self.draw(in: CGRectMake(0, 0, aspectFill.width, aspectFill.height))
-        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-    
-    func CGRectMake(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) -> CGRect {
-        return CGRect(x: x, y: y, width: width, height: height)
-    }
-    
 }
