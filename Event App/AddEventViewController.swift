@@ -25,7 +25,6 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
         notificationSwitch.addTarget(self, action: #selector(switchIsChanged(mySwitch:)), for: .valueChanged)
         
         dateField.delegate = self
-        //titleField.delegate = self
         
         createDirectory()
     }
@@ -89,7 +88,13 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func addEvent(_ sender: Any) {
-        
+        if titleField.text == "" {
+            let alert = UIAlertController(title: "Attention", message: "Please Enter A Title Before Moving Forward", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            picturePath = titleField.text!
+        }
     }
     
     func switchIsChanged(mySwitch: UISwitch) {
@@ -137,16 +142,12 @@ class AddEventViewController: UIViewController, UIImagePickerControllerDelegate,
         let formatter = DateFormatter()
         formatter.dateStyle = .full
         dateField.text = formatter.string(from: sender.date)
-        
-        print("Try this at home")
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let datePicker = UIDatePicker()
         textField.inputView = datePicker
         datePicker.addTarget(self, action: #selector(datePickerChanged(sender:)), for: .valueChanged)
-        
-        print("This Worked")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

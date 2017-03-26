@@ -118,6 +118,7 @@
                                 </state>
                                 <connections>
                                     <action selector="addEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hlx-nw-mdT"/>
+                                    <segue destination="oLL-WH-M4l" kind="show" id="PcC-E2-KH2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -300,7 +301,7 @@
         <!--Item 1-->
         <scene sceneID="lZO-BT-1Za">
             <objects>
-                <viewController id="cro-HX-YP6" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TabOneViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cro-HX-YP6" customClass="TabOneViewController" customModule="Event_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Udu-lK-MSN"/>
                         <viewControllerLayoutGuide type="bottom" id="9Mc-fh-Blh"/>
@@ -308,13 +309,27 @@
                     <view key="view" contentMode="scaleToFill" id="RNT-s9-j0v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="obK-uI-sJY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="obK-uI-sJY" firstAttribute="leading" secondItem="RNT-s9-j0v" secondAttribute="leading" id="4Zs-DL-QyL"/>
+                            <constraint firstItem="obK-uI-sJY" firstAttribute="top" secondItem="RNT-s9-j0v" secondAttribute="top" id="QS6-19-raH"/>
+                            <constraint firstAttribute="trailing" secondItem="obK-uI-sJY" secondAttribute="trailing" id="WZr-Hk-OXQ"/>
+                            <constraint firstItem="9Mc-fh-Blh" firstAttribute="top" secondItem="obK-uI-sJY" secondAttribute="bottom" id="z0x-3m-fMx"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="bap-Op-jvx"/>
+                    <connections>
+                        <outlet property="imageView" destination="obK-uI-sJY" id="hHU-lg-cGs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5EC-pG-57A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="126" y="-1304"/>
+            <point key="canvasLocation" x="125.59999999999999" y="-1304.7976011994003"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lyA-Nh-yua">

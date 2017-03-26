@@ -27,6 +27,8 @@
 		DA2624A71E871C4B003C3FE9 /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2624971E871C4B003C3FE9 /* FSCalendar+Deprecated.m */; };
 		DA2624B51E882956003C3FE9 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2624B41E882956003C3FE9 /* first.png */; };
 		DA2624B71E8835EC003C3FE9 /* Variables.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2624B61E8835EC003C3FE9 /* Variables.swift */; };
+		DA2624B91E887112003C3FE9 /* TabOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2624B81E887112003C3FE9 /* TabOneViewController.swift */; };
+		DA2624BB1E887123003C3FE9 /* TabTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2624BA1E887123003C3FE9 /* TabTwoViewController.swift */; };
 		DA49BBFB1E86D9A100C3D475 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49BBFA1E86D9A100C3D475 /* AppDelegate.swift */; };
 		DA49BBFD1E86D9A100C3D475 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA49BBFC1E86D9A100C3D475 /* ViewController.swift */; };
 		DA49BC001E86D9A100C3D475 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA49BBFE1E86D9A100C3D475 /* Main.storyboard */; };
@@ -96,6 +98,8 @@
 		DA2624971E871C4B003C3FE9 /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
 		DA2624B41E882956003C3FE9 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		DA2624B61E8835EC003C3FE9 /* Variables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Variables.swift; sourceTree = "<group>"; };
+		DA2624B81E887112003C3FE9 /* TabOneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabOneViewController.swift; sourceTree = "<group>"; };
+		DA2624BA1E887123003C3FE9 /* TabTwoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabTwoViewController.swift; sourceTree = "<group>"; };
 		DA49BBF71E86D9A100C3D475 /* Event App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Event App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA49BBFA1E86D9A100C3D475 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA49BBFC1E86D9A100C3D475 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +231,8 @@
 				DA49BBFA1E86D9A100C3D475 /* AppDelegate.swift */,
 				DA49BBFC1E86D9A100C3D475 /* ViewController.swift */,
 				DA49BC2B1E86D9D800C3D475 /* AddEventViewController.swift */,
+				DA2624B81E887112003C3FE9 /* TabOneViewController.swift */,
+				DA2624BA1E887123003C3FE9 /* TabTwoViewController.swift */,
 				DA2624B61E8835EC003C3FE9 /* Variables.swift */,
 				DA2624B31E876F19003C3FE9 /* CoreData */,
 				DA49BC2E1E86EA7400C3D475 /* CalendarFiles */,
@@ -490,6 +496,8 @@
 				DA2624A61E871C4B003C3FE9 /* FSCalendarExtensions.m in Sources */,
 				DA26249E1E871C4B003C3FE9 /* FSCalendarScopeHandle.m in Sources */,
 				DA49BC321E86EB6500C3D475 /* CellView.swift in Sources */,
+				DA2624BB1E887123003C3FE9 /* TabTwoViewController.swift in Sources */,
+				DA2624B91E887112003C3FE9 /* TabOneViewController.swift in Sources */,
 				DA49BC2C1E86D9D800C3D475 /* AddEventViewController.swift in Sources */,
 				DA49BC031E86D9A100C3D475 /* Event_App.xcdatamodeld in Sources */,
 				DA49BBFB1E86D9A100C3D475 /* AppDelegate.swift in Sources */,

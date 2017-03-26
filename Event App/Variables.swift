@@ -10,3 +10,6 @@ import Foundation
 
 var chosenCategory : String!
 var notificationBool = false
+
+var picturePath : String!
+var pictureArray = [String]()
