@@ -187,6 +187,13 @@
 			name = FSCalendar;
 			sourceTree = "<group>";
 		};
+		DA2624B31E876F19003C3FE9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		DA49BBEE1E86D9A000C3D475 = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +223,7 @@
 				DA49BBFA1E86D9A100C3D475 /* AppDelegate.swift */,
 				DA49BBFC1E86D9A100C3D475 /* ViewController.swift */,
 				DA49BC2B1E86D9D800C3D475 /* AddEventViewController.swift */,
+				DA2624B31E876F19003C3FE9 /* CoreData */,
 				DA49BC2E1E86EA7400C3D475 /* CalendarFiles */,
 				DA49BBFE1E86D9A100C3D475 /* Main.storyboard */,
 				DA49BC041E86D9A100C3D475 /* Assets.xcassets */,
